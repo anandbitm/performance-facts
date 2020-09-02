@@ -1,0 +1,13 @@
+div {
+    font-size: 30px;
+    height: 00px;
+}
+
+p {
+    font-size: 20px;
+    color: #cccccc;
+}
+
+p.dntshow {
+    display: none;
+}

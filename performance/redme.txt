@@ -1,0 +1,88 @@
+n/w -> [[[ byte -> [parse] -> string/character -> token -> node ]]] -> DOM (incremental)        render Tree     layout      [reflow & repaint]   
+                                                                CSS -> CSSOM (not incremental)               
+                                                                JS -> (Block HTML Parsing)
+
+NW -> downlaod resourse ->          render Tree
+body        div                         body
+div         p  p.dntshow                div
+p p                                 p
+
+Nw -> downlod js resource
+
+js1 deffer
+js2 depends on js1 deffer
+
+n/w call downlod asunc + parsing will not blocked ->   js -> execute
+n/w call downlod asunc + parsing will not blocked ->                                                js -> execute
+
+CRP
+- images    not blocking parsing and rendering
+- font ->   not blocking parsing and rendering, font-display
+
+SPA
+- 
+First Byte
+First Paint
+First Contentful Paint
+First Meaningful Paint
+Time to interactive
+
+Rendering will be delayed
+SSR - Server Side Rendering
+JS - async or deffer - if possible
+
+BROWSER                     Server
+//url           request -> /url
+                response <- html content
+
+SPA
+React                   request -> index.html
+                        response <- <linl><div id="root"></div><script src=""></dcript>
+
+<link href="">
+<div>
+</div>
+<script src="" />
+    js - creating dom -> dom tree -> render tree
+
+SSR                          Server
+                    request -> /home -> server need to construct html based on route
+                        response <- <linl><div id="root"></div><div><div><script src=""></script>
+
+<link href="">
+<div>
+</div>
+<script deffer src="" />
+    js - creating dom -> dom tree -> render tree
+
+Performance
+Client
+- Identify Critical Rendering Path
+    - Donot block CRP.
+    - Css -> Inline critical style
+    - js -> all js should move at end of page, async & defered where ever it is possible
+    - html -> minify & comress
+    - bundling (reduce n/w calls), minify (reduce size) & splitting (reduce size - unused script/css will not be downloaded)
+    - For SPA - should have SSR 
+    - Image - 
+        compresseion -> lossless compresseion technique, 
+        cache in CDN, 
+        use proper image size per device, 
+        appropiate image type, 
+        preloading
+        image sprite - can be used in css
+- Mefiest Cache
+- PWA
+- Main thread should not block for long running task
+
+Server
+- Low Latency
+- CDN
+- Headers -> Etags, cache-control & expiry
+- Compression
+- Http2
+
+Network
+- Bandwidth
+- DNS looktup should be fast
+- TCP Handshake
